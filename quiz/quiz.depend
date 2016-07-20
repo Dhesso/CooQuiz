@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1468370519 source:c:\users\jefer_000\desktop\quiz\quiz\main.cpp
+	<iostream>
+	<string>
+	<stdlib.h>
+	"pergunta.h"
+	"quiz.h"
+	<windows.h>
+	<winsock2.h>
+	<mysql.h>
+	<stdio.h>
+
+1468940616 source:c:\users\jefer_000\desktop\quiz\quiz\src\pergunta.cpp
+	"pergunta.h"
+	<stdlib.h>
+	<time.h>
+
+1468940616 c:\users\jefer_000\desktop\quiz\quiz\include\pergunta.h
+	<iostream>
+
+1467921160 source:c:\users\jefer_000\desktop\quiz\quiz\src\perguntas.cpp
+
+1468944032 c:\users\jefer_000\desktop\quiz\quiz\include\quiz.h
+	<stdlib.h>
+	<vector>
+	"pergunta.h"
+
+1468371358 source:c:\users\jefer_000\desktop\quiz\quiz\src\quiz.cpp
+	"quiz.h"
+	<stdlib.h>
+
+1468367000 source:c:\users\jefer_000\desktop\quiz\quiz\conexaobanco.c
+	<windows.h>
+	<winsock2.h>
+	<mysql.h>
+
