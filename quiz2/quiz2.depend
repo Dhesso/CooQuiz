@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1469391515 source:c:\users\jefer_000\desktop\quiz 2\quiz2\src\pergunta.cpp
+	"pergunta.h"
+
+1469391515 c:\users\jefer_000\desktop\quiz 2\quiz2\include\pergunta.h
+	<iostream>
+	<stdlib.h>
+	<time.h>
+
+1469395008 source:c:\users\jefer_000\desktop\quiz 2\quiz2\main.cpp
+	<iostream>
+	"quiz.h"
+
+1469396002 source:c:\users\jefer_000\desktop\quiz 2\quiz2\src\quiz.cpp
+	"quiz.h"
+	"conexaoDb.h"
+
+1469394986 c:\users\jefer_000\desktop\quiz 2\quiz2\include\quiz.h
+	<vector>
+	<stdlib.h>
+	"pergunta.h"
+
+1469395513 c:\users\jefer_000\desktop\quiz 2\quiz2\include\conexaodb.h
+	<windows.h>
+	<winsock2.h>
+	<mysql.h>
+	<iostream>
+
+1469395979 source:c:\users\jefer_000\desktop\quiz 2\quiz2\src\conexaodb.cpp
+	"conexaoDb.h"
+	<string>
+
