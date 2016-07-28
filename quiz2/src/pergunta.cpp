@@ -1,7 +1,5 @@
 #include "pergunta.h"
 
-using namespace std;
-
 //CONSTRUTOR
 
 pergunta:: pergunta(string id, string cabecalho, string alternativas[], string resposta){

@@ -2,8 +2,8 @@
 #define QUIZ_H
 
 #include <vector>
-#include <stdlib.h>
 #include "pergunta.h"
+#include "conexaoDb.h"
 
 using namespace std;
 

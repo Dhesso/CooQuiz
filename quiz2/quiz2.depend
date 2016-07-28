@@ -30,3 +30,39 @@
 	"conexaoDb.h"
 	<string>
 
+1469682524 source:c:\users\jeferson ferreira\documents\cooquiz-master\quiz2\main.cpp
+	<iostream>
+	"quiz.h"
+	"conexaoDb.h"
+
+1469684129 c:\users\jeferson ferreira\documents\cooquiz-master\quiz2\include\quiz.h
+	<vector>
+	"pergunta.h"
+	"conexaoDb.h"
+
+1469613304 c:\users\jeferson ferreira\documents\cooquiz-master\quiz2\include\pergunta.h
+	<iostream>
+	<stdlib.h>
+	<time.h>
+
+1469682935 source:c:\users\jeferson ferreira\documents\cooquiz-master\quiz2\src\conexaodb.cpp
+	"conexaoDb.h"
+	<string>
+	<windows.h>
+	<winsock2.h>
+	<mysql.h>
+	<iostream>
+
+1469663023 c:\users\jeferson ferreira\documents\cooquiz-master\quiz2\include\conexaodb.h
+	<iostream>
+	<windows.h>
+	<winsock2.h>
+	<mysql.h>
+	<iostream>
+
+1469681832 source:c:\users\jeferson ferreira\documents\cooquiz-master\quiz2\src\pergunta.cpp
+	"pergunta.h"
+
+1469686225 source:c:\users\jeferson ferreira\documents\cooquiz-master\quiz2\src\quiz.cpp
+	"quiz.h"
+

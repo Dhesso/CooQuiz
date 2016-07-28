@@ -1,15 +1,5 @@
 
 #include "quiz.h"
-#include "conexaoDb.h"
-
-//VARIAVEIS DA CONEXAO
-MYSQL conexao; //variavel MYSQL
-MYSQL_RES *result; //result da query
-MYSQL_FIELD *campos; // colunas do store result
-char query[]="SELECT * FROM perguntas;"; //char contendo a query
-
-
-//#include "conexaoBanco.h"
 
 //IMPRIME UMA PERGUNTA NA TELA E RETORNA 1 SE RESPONDIDA CORRETAMENTE E 0 SE INCORRETA
 bool quiz::telaDePergunta(pergunta i, int a){
@@ -46,50 +36,59 @@ quiz::quiz(int tipo, int nivel, int qtdqestoes=1)
             this->quantidadeDeQuestoes = qtdqestoes;
             this->pontuacao = 0;
 
-            conectDB(conexao); //CONECTA AO BANCO DE DADOS
-            result = inviteQuery(conexao,query); //ENVIA UMA QUERY AO DB E RETORNA UMA REP.
-
-            srand(time(NULL));//semeia o rand
-            int offset;//inteiro para controlar a lina da consulta
+            int offset=0;//inteiro para controlar a lina da consulta
 
             cout << offset << endl;
 
             DADOS_DE_PERGUNTAS dados; //estrutura de dados para armazer temporariamente os dados das perguntas
 
+
             for(int i=0 ; i < this->quantidadeDeQuestoes ; i++)
             {
-                offset = rand() % (int)mysql_num_rows(result)-1; //randomisa a linha da consulta do banco
-                dados = consultaPergunta(result, "programacao III", "moderado" , offset); //cria a estrutura com dados da linha do db
-
+                srand(time(NULL));//semeia o rand
+                bool repete;
+                do{
+                offset = rand() % (getOffset()+1);
+                cout << "o offseet escolido foi : " << offset << endl; //randomisa a linha da consulta do banco
+                dados = consultaPergunta(offset); //cria a estrutura com dados da linha do db
+                cout << "linha apos dados" << endl;
                 if (Perguntas.empty()) //verifica se o vetor Perguntas está vazio
-                {
-                     // quarda os valores da estrutura em um objeto
-
+                { // quarda os valores da estrutura em um objeto
+                   // pergunta* ppergunta = new pergunta(dados.id, dados.cabecalho , dados.alternativas , dados.respostaCorreta);
                     this->Perguntas.push_back(*(new pergunta(dados.id, dados.cabecalho , dados.alternativas , dados.respostaCorreta))); // faz uma copia do objeto para o vetor pergun
+                    //delete ppergunta;
+                    //ppergunta = NULL;
+                    cout << "primeira pergunta inserida" <<endl;
 
-                }else
-                    {
-                        bool repete = true;
-                        for(int j=0 ; j < Perguntas.size() ; i++) //percore o vetor Pergunta
+                }else{
+                    cout << "apos else" << endl;
+                    int tamanhoDoVector = this->Perguntas.size();
+                        for(int j=0 ; j < tamanhoDoVector ; j++) //percore o vetor Pergunta
                         {
+
                             if(Perguntas[j].getId() == dados.id) //verifica se há perguntas repetidas no vetor
                                 {
                                 repete = true;
+                                cout << "houve repetição" << endl;
                                 break;
+                                cout << "apos break" << endl;
                                 }else
                                     {
                                         repete = false;
+                                        cout << "não houve repetição" << endl << endl;
                                     }
-
                         }
 
                         if(repete == false) // caso não haja perguntas repetidas guarda a nova pergunta
                         {
-
+                            //pergunta* ppergunta = new pergunta(dados.id, dados.cabecalho , dados.alternativas , dados.respostaCorreta);
                             this->Perguntas.push_back(*(new pergunta(dados.id, dados.cabecalho , dados.alternativas , dados.respostaCorreta)));
-
+                            cout << "proxima pergunta realizada com sucesso" << endl;
                         }
                     }
+                }while(repete == true);
+
+                cout << "fim do laco" << endl;
 
               }
 
