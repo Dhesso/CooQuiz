@@ -48,9 +48,9 @@ quiz::quiz(int tipo, int nivel, int qtdqestoes=1)
                 srand(time(NULL));//semeia o rand
                 bool repete;
                 do{
-                offset = rand() % (getOffset()+1);
-                cout << "o offseet escolido foi : " << offset << endl; //randomisa a linha da consulta do banco
-                dados = consultaPergunta(offset); //cria a estrutura com dados da linha do db
+                //offset = rand() % (getOffset()+1);
+                //cout << "o offseet escolido foi : " << offset << endl; //randomisa a linha da consulta do banco
+                dados = consultaPergunta(); //cria a estrutura com dados da linha do db
                 cout << "linha apos dados" << endl;
                 if (Perguntas.empty()) //verifica se o vetor Perguntas está vazio
                 { // quarda os valores da estrutura em um objeto

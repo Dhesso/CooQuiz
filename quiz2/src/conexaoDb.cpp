@@ -15,12 +15,13 @@ using namespace std;
 MYSQL conect; //variavel MYSQL
 MYSQL_RES *result; //result da query
 MYSQL_FIELD *campos; // colunas do store result
+
+//Thiago resolve isso aqui!:
 char query[]="SELECT * FROM perguntas;"; //char contendo a query
 
 
-DADOS_DE_PERGUNTAS consultaPergunta(int offset){
+DADOS_DE_PERGUNTAS consultaPergunta(){
 
-    int offsett = offset;
     DADOS_DE_PERGUNTAS dados;
 
     mysql_init(&conect); // inicializa MYSQL conexão
@@ -33,8 +34,12 @@ DADOS_DE_PERGUNTAS consultaPergunta(int offset){
         result = mysql_store_result(&conect);
         MYSQL_ROW linhas; //linhas do store result
 
+        //Luan é aqui!!:
+        srand(time(NULL));//semeia o rand
+        int offset = rand() % ((int)mysql_num_rows(result)-1);
+
         linhas = mysql_fetch_row(result); //quarda a proxima linha do result
-        mysql_data_seek(result, offsett); //define a posição usual de linha do result
+        mysql_data_seek(result, offset); //define a posição usual de linha do result
         linhas = mysql_fetch_row(result);
 
 //obs: implementar um verificador do offset
@@ -56,6 +61,9 @@ DADOS_DE_PERGUNTAS consultaPergunta(int offset){
 
         dados.respostaCorreta = linhas[11];
 
+        dados.numeroDeLinhas = (int)mysql_num_rows(result)-1;
+        dados.linhaSorteada = offset;
+
         return dados;
     }else
         {
@@ -66,6 +74,9 @@ DADOS_DE_PERGUNTAS consultaPergunta(int offset){
     return dados;
 }
 
+
+//não usual:
+/*
 int getOffset(){
     mysql_init(&conect); // inicializa MYSQL conexão
     if ( mysql_real_connect(&conect, HOST, USER, PASS, DB, 0, NULL, 0) ) //começa a conexão e verifica se esta ok
@@ -87,7 +98,8 @@ int getOffset(){
 
     return 0;
 }
-/*}
+
+}
 using namespace std;
 
 DADOS_DE_PERGUNTAS consultaPergunta(MYSQL_RES* res, std::string disciplina, std::string dificuldade, int offset){

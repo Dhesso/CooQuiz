@@ -53,16 +53,14 @@
 	<mysql.h>
 	<iostream>
 
-1469663023 c:\users\jeferson ferreira\documents\cooquiz-master\quiz2\include\conexaodb.h
+1469752777 c:\users\jeferson ferreira\documents\cooquiz-master\quiz2\include\conexaodb.h
 	<iostream>
-	<windows.h>
-	<winsock2.h>
-	<mysql.h>
-	<iostream>
+	<stdlib.h>
+	<time.h>
 
 1469681832 source:c:\users\jeferson ferreira\documents\cooquiz-master\quiz2\src\pergunta.cpp
 	"pergunta.h"
 
-1469686225 source:c:\users\jeferson ferreira\documents\cooquiz-master\quiz2\src\quiz.cpp
+1469752733 source:c:\users\jeferson ferreira\documents\cooquiz-master\quiz2\src\quiz.cpp
 	"quiz.h"
 
