@@ -64,3 +64,37 @@
 1469752733 source:c:\users\jeferson ferreira\documents\cooquiz-master\quiz2\src\quiz.cpp
 	"quiz.h"
 
+1469739220 source:c:\users\jeferson\desktop\cooquiz-master\quiz2\main.cpp
+	<iostream>
+	"quiz.h"
+	"conexaoDb.h"
+
+1472241468 c:\users\jeferson\desktop\cooquiz-master\quiz2\include\quiz.h
+	<vector>
+	"pergunta.h"
+	"conexaoDb.h"
+
+1472239772 c:\users\jeferson\desktop\cooquiz-master\quiz2\include\pergunta.h
+	<iostream>
+	<stdlib.h>
+	<time.h>
+
+1469739220 c:\users\jeferson\desktop\cooquiz-master\quiz2\include\conexaodb.h
+	<iostream>
+	<stdlib.h>
+	<time.h>
+
+1472238018 source:c:\users\jeferson\desktop\cooquiz-master\quiz2\src\conexaodb.cpp
+	"conexaoDb.h"
+	<string>
+	<windows.h>
+	<winsock2.h>
+	<mysql.h>
+	<iostream>
+
+1472239697 source:c:\users\jeferson\desktop\cooquiz-master\quiz2\src\pergunta.cpp
+	"pergunta.h"
+
+1469739220 source:c:\users\jeferson\desktop\cooquiz-master\quiz2\src\quiz.cpp
+	"quiz.h"
+

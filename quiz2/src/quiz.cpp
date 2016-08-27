@@ -1,6 +1,99 @@
 
 #include "quiz.h"
 
+//CONSTRUTOR
+quiz::quiz(int tipo, int nivel, int qtdqestoes=1)
+{
+    switch (tipo){
+        case 1:
+            setTipo("livre").setQuantidadeDeQuestoes(qtdqestoes).setPontuacao(0).setPerguntas();
+            system("pause");
+            break;
+    }
+}
+
+//GET'S
+int quiz::getPontuacao(){
+return this->pontuacao;
+}
+
+vector<pergunta> quiz::getPerguntas(){
+return this->Perguntas;
+}
+
+//SET'S COM CASCATEAMENTO
+quiz &quiz::setPontuacao(int spontuacao){
+    this->pontuacao = spontuacao;
+    return *this;
+}
+quiz &quiz::setQuantidadeDeQuestoes(int squantidadedequestoes){
+    this->quantidadeDeQuestoes = squantidadedequestoes;
+    return *this;
+}
+quiz &quiz::setTipo(string stipo){
+    this->tipo = stipo;
+    return *this;
+}
+quiz &quiz::setNomeDoCurso(string snomedocurso){
+    this->nomeDoCurso = snomedocurso;
+    return *this;
+}
+quiz &quiz::setNivel(string snivel){
+    this->nivel = snivel;
+    return *this;
+}
+
+//VERIFICA REPETIÇÕES DE PERGUNTAS E PREENCHE O VETOR PERGUNTAS COM OBJETOS PERGUNTAS
+quiz &quiz::setPerguntas(){
+
+    int offset=0; //inteiro para controlar a lina da consulta
+
+    cout << offset << endl;
+
+    DADOS_DE_PERGUNTAS dados; //estrutura de dados para armazer temporariamente os dados das perguntas
+
+
+    for(int i=0 ; i < this->quantidadeDeQuestoes ; i++){
+        srand(time(NULL));//semeia o rand
+        bool repete;
+        do{
+            dados = consultaPergunta(); //cria a estrutura dados com dados da linha do db
+            cout << "linha apos dados" << endl;
+
+            if (Perguntas.empty()) //verifica se o vetor Perguntas está vazio
+            {
+                this->Perguntas.push_back(*(new pergunta(dados.id, dados.cabecalho , dados.alternativas , dados.respostaCorreta)));// faz uma copia do objeto para o vetor perguntas
+                cout << "primeira pergunta inserida" <<endl;
+            }else{
+                int tamanhoDoVector = this->Perguntas.size(); //armazena o tamanho do vetor
+                for(int j=0 ; j < tamanhoDoVector ; j++) //percore o vetor Pergunta
+                {
+                    if(Perguntas[j].getId() == dados.id) //verifica se há perguntas repetidas no vetor
+                    {
+                        repete = true;
+                        cout << "houve repetição" << endl;
+                        break;
+                    }else
+                        {
+                        repete = false;
+                        cout << "não houve repetição" << endl << endl;
+                        }
+                }
+
+                    if(repete == false) // caso não haja perguntas repetidas guarda a nova pergunta
+                    {
+                        this->Perguntas.push_back(*(new pergunta(dados.id, dados.cabecalho , dados.alternativas , dados.respostaCorreta)));
+                        cout << "proxima pergunta realizada com sucesso" << endl;
+                    }
+            }
+        }while(repete == true);
+
+        cout << "fim do laco" << endl;
+
+    }
+    return *this;
+}
+
 //IMPRIME UMA PERGUNTA NA TELA E RETORNA 1 SE RESPONDIDA CORRETAMENTE E 0 SE INCORRETA
 bool quiz::telaDePergunta(pergunta i, int a){
     string resposta;
@@ -25,83 +118,4 @@ bool quiz::telaDePergunta(pergunta i, int a){
     }while(indice==4);
 
     return i.getResposta(indice);
-}
-
-quiz::quiz(int tipo, int nivel, int qtdqestoes=1)
-{
-    //INSTANCIA OBJETOS DO TIPO PERGUNTA E IMPRIME A PONTUAÇÃO DO USUARIO
-    switch (tipo){
-        case 1:
-            this->tipo = "livre";
-            this->quantidadeDeQuestoes = qtdqestoes;
-            this->pontuacao = 0;
-
-            int offset=0;//inteiro para controlar a lina da consulta
-
-            cout << offset << endl;
-
-            DADOS_DE_PERGUNTAS dados; //estrutura de dados para armazer temporariamente os dados das perguntas
-
-
-            for(int i=0 ; i < this->quantidadeDeQuestoes ; i++)
-            {
-                srand(time(NULL));//semeia o rand
-                bool repete;
-                do{
-                //offset = rand() % (getOffset()+1);
-                //cout << "o offseet escolido foi : " << offset << endl; //randomisa a linha da consulta do banco
-                dados = consultaPergunta(); //cria a estrutura com dados da linha do db
-                cout << "linha apos dados" << endl;
-                if (Perguntas.empty()) //verifica se o vetor Perguntas está vazio
-                { // quarda os valores da estrutura em um objeto
-                   // pergunta* ppergunta = new pergunta(dados.id, dados.cabecalho , dados.alternativas , dados.respostaCorreta);
-                    this->Perguntas.push_back(*(new pergunta(dados.id, dados.cabecalho , dados.alternativas , dados.respostaCorreta))); // faz uma copia do objeto para o vetor pergun
-                    //delete ppergunta;
-                    //ppergunta = NULL;
-                    cout << "primeira pergunta inserida" <<endl;
-
-                }else{
-                    cout << "apos else" << endl;
-                    int tamanhoDoVector = this->Perguntas.size();
-                        for(int j=0 ; j < tamanhoDoVector ; j++) //percore o vetor Pergunta
-                        {
-
-                            if(Perguntas[j].getId() == dados.id) //verifica se há perguntas repetidas no vetor
-                                {
-                                repete = true;
-                                cout << "houve repetição" << endl;
-                                break;
-                                cout << "apos break" << endl;
-                                }else
-                                    {
-                                        repete = false;
-                                        cout << "não houve repetição" << endl << endl;
-                                    }
-                        }
-
-                        if(repete == false) // caso não haja perguntas repetidas guarda a nova pergunta
-                        {
-                            //pergunta* ppergunta = new pergunta(dados.id, dados.cabecalho , dados.alternativas , dados.respostaCorreta);
-                            this->Perguntas.push_back(*(new pergunta(dados.id, dados.cabecalho , dados.alternativas , dados.respostaCorreta)));
-                            cout << "proxima pergunta realizada com sucesso" << endl;
-                        }
-                    }
-                }while(repete == true);
-
-                cout << "fim do laco" << endl;
-
-              }
-
-            //cout << "sua pontuacao e: "<< this->pontuacao<<endl;
-            system("pause");
-            break;
-    }
-}
-
-int quiz::getPontuacao(){
-return this->pontuacao;
-}
-
-vector<pergunta> quiz::getPerguntas(){
-return this->Perguntas;
 }

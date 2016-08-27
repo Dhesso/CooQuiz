@@ -2,17 +2,31 @@
 
 //CONSTRUTOR
 
-pergunta:: pergunta(string id, string cabecalho, string alternativas[], string resposta){
+pergunta:: pergunta(string cid, string ccabecalho, string calternativas[], string cresposta){
 
-    //SET'S VALORES DOS ATRIBUTOS
-    this->id = id;
-    this->cabecalho = cabecalho;
-    this->resposta = resposta;
+    setid(cid).setcabecalho(ccabecalho).setalternativas(calternativas).setresposta(cresposta);
 
-    //PREENCHE O VETOR alternativas[]
+}
+//SET'S
+pergunta &pergunta::setid(string sid){
+    this->id=sid;
+    return *this;
+}
+pergunta &pergunta::setcabecalho(string scabecalho){
+    this->cabecalho = scabecalho;
+    return *this;
+}
+pergunta &pergunta::setresposta(string sresposta){
+    this->resposta = sresposta;
+    return *this;
+}
+
+pergunta &pergunta::setalternativas(string salternativas[]){
+
+    //PREENCHE O VETOR ALTERNATIVAS
     for(int i=0; i<4; i++){
 
-        this->alternativas[i]=alternativas[i];
+        this->alternativas[i]=salternativas[i];
     }
 
     //RAMDOMIZA AS POSIÇÕES DO VETOR ALTERNATIVAS[]
@@ -23,7 +37,9 @@ pergunta:: pergunta(string id, string cabecalho, string alternativas[], string r
         this->alternativas[i] = this->alternativas[r];
         this->alternativas[r] = temp;
     }
+    return *this;
 }
+
 
 //GETERES
 
@@ -48,5 +64,6 @@ string pergunta::getAlternativas(int i){
     return this->alternativas[i];
 }
 
+//SETERS
 
 

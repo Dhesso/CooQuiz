@@ -19,6 +19,7 @@ struct DADOS_DE_PERGUNTAS {
 };
 
 DADOS_DE_PERGUNTAS consultaPergunta();
+
 int getOffset();
 
 #endif // CONEXAODB_H_INCLUDED

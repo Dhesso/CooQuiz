@@ -11,7 +11,8 @@ class pergunta
 {
     public:
         //CONSTRUTORES:
-        pergunta(string id, string cabecalho, string alternativas[], string respota);
+        pergunta(string cid, string ccabecalho, string calternativas[], string crespota);
+
         //GETS:
         string getId();
         string getCabecalho();
@@ -21,7 +22,12 @@ class pergunta
 
     protected:
     private:
-
+        //SET'S PARA CASCATEAMENTO
+        pergunta &setid(string sid);
+        pergunta &setcabecalho(string scabecalho);
+        pergunta &setresposta(string sresposta);
+        pergunta &setalternativas(string salternativas[]);
+        //VARIAVEIS MEMBROS
         string id;
         string cabecalho;
         string alternativas[4];
