@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TelaPrincipal</class>
+ <widget class="QMainWindow" name="TelaPrincipal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>492</width>
+    <height>379</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>CooQuiz</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>492</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuPerfil">
+    <property name="title">
+     <string>Usuario</string>
+    </property>
+    <addaction name="actionModificar"/>
+    <addaction name="actionRank"/>
+    <addaction name="actionSair"/>
+   </widget>
+   <widget class="QMenu" name="menuQuiz">
+    <property name="title">
+     <string>Quiz</string>
+    </property>
+    <addaction name="actionQuiz_Livre"/>
+    <addaction name="actionQuiz_Prov_o"/>
+    <addaction name="actionQuiz_Challenge"/>
+   </widget>
+   <widget class="QMenu" name="menuAjuda">
+    <property name="title">
+     <string>Ajuda</string>
+    </property>
+    <addaction name="actionSobre_o_CooQuiz"/>
+    <addaction name="actionSobre_o_Qt"/>
+   </widget>
+   <widget class="QMenu" name="menuPerguntas">
+    <property name="title">
+     <string>Perguntas</string>
+    </property>
+    <addaction name="actionNova_Pergunta"/>
+   </widget>
+   <addaction name="menuPerfil"/>
+   <addaction name="menuQuiz"/>
+   <addaction name="menuPerguntas"/>
+   <addaction name="menuAjuda"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionModificar">
+   <property name="text">
+    <string>Modificar Dados de Usuario</string>
+   </property>
+  </action>
+  <action name="actionQuiz_Livre">
+   <property name="text">
+    <string>Quiz Livre</string>
+   </property>
+  </action>
+  <action name="actionQuiz_Prov_o">
+   <property name="text">
+    <string>Quiz Provão</string>
+   </property>
+  </action>
+  <action name="actionQuiz_Challenge">
+   <property name="text">
+    <string>Quiz Challenge</string>
+   </property>
+  </action>
+  <action name="actionNova_Pergunta">
+   <property name="text">
+    <string>Nova Pergunta</string>
+   </property>
+  </action>
+  <action name="actionSobre_o_CooQuiz">
+   <property name="text">
+    <string>Sobre o CooQuiz</string>
+   </property>
+  </action>
+  <action name="actionSobre_o_Qt">
+   <property name="text">
+    <string>Sobre o Qt</string>
+   </property>
+  </action>
+  <action name="actionRank">
+   <property name="text">
+    <string>Rank</string>
+   </property>
+  </action>
+  <action name="actionSair">
+   <property name="text">
+    <string>Sair</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
